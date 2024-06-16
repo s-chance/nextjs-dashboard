@@ -44,7 +44,9 @@ const UpdateInvoice = FormSchema.omit({ id: true, date: true });
 
 const updateInvoice = async (id: string, formData: FormData) => {
   const { customerId, amount, status } = UpdateInvoice.parse({
-    ...formData,
+    customerId: formData.get('customerId'),
+    amount: formData.get('amount'),
+    status: formData.get('status'),
   });
 
   const amountInCents = amount * 100;
